@@ -38,13 +38,18 @@
 	  
 	  return ids;
       }
-      function formatURLs(urls) {
-	  result = ""
-	  for(i in urls){
+      
+      function formatIDs(ids) {
+	  var result = "";
+	  var youtube_url = "https://youtube.com/watch?v=";
+	  for(i in ids){
 	      result += "<li>"
-		  + "<a href=\"" + urls[i] + "\">"
-		  + urls[i]
-		  + "</a>"
+		  + "<a href=\"" + youtube_url + ids[i] + "\">"
+		  + ids[i]
+		  + "</a> -- "
+		  + "<a href=\"JavaScript:void(0)\""
+		  + "onClick=\"player.loadVideoById('" + ids[i] + "'); cursor=i;\">"
+		  + "Play" + "</a>"
 		  + "</li>"
 	  }
 	  return result;
