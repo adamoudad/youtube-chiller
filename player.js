@@ -1,8 +1,5 @@
-var playlistTag = document.getElementsByTagName('playlist')
-
-// var playlist = ['IdbfoOeN7ho', "tuFp3Iv1T4E", "VZaXsE7P7f0"]
-var cursor = 0; 		// Cursor in playlist
-
+var video_ids = [];		// Array of video IDs
+var cursor = 0;			// Cursor in video_ids indicating current video playing
 
 // Load the IFrame Player API code asynchronously
 function loadYoutubeIFrame() {
@@ -18,10 +15,11 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '390',
         width: '640',
-        videoId: playlist[0],
+        videoId: '',
         events: {
 	    'onReady': onPlayerReady,
-	    'onStateChange': onPlayerStateChange
+	    'onStateChange': onPlayerStateChange,
+	    'onError': onError
         }
     });
 }
@@ -33,9 +31,17 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.ENDED) {
 	cursor += 1;
-	player.loadVideoById(playlist[cursor], 5, "large")
+	player.loadVideoById(video_ids[cursor], 5, "large");
     }
 }
+
+function onError(event) {
+    cursor += 1;
+    if (video_ids[cursor]) {
+	player.loadVideoById(video_ids[cursor], 5, "large");
+    }
+}
+
 function stopVideo() {
     player.stopVideo();
 }
