@@ -22,11 +22,21 @@
 	  playlist.innerHTML = urls;
       }
       function parseURL(text) {
-	  // Not implemented
-	  // var textA = 'All I see her http://e are https apphttps//les, APPles and apPleS';
-	  // var regex = /https?:\/\/\d+(?=see)/g;
-	  // return textA.match(regex);
-	  alert("Sorry, not implemented yet")
+	  var lines = text.split("\n")
+	  patterns = [/(\?|&)v=([^&#]+)/ // For youtube.com/watch&v=video_id
+	   	      , /(\.be\/)+([^\/]+)/ // For youtu.be/video_id
+	   	      , /(\embed\/)+([^\/]+)/]; // For youtube.com/embed/video_id
+	  ids = [];
+	  
+	  // Match patterns
+	  for (i in lines) {
+	      if (ids[i] = lines[i].match(patterns[0]).pop()) {
+	      } else if (ids[i] = lines[i].match(patterns[1]).pop()) {
+	      } else if (ids[i] = lines[i].match(patterns[2]).pop()) {
+	      }
+	  }
+	  
+	  return ids;
       }
       function formatURLs(urls) {
 	  result = ""
