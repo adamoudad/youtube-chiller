@@ -5,4 +5,4 @@ The javascript code uses YouTube Player API for iframe Embeds to make retrieve Y
 
 1. Open `index.html` in your web browser
 2. Drop some links in the text area
-3. Press *Update* button to update the playlist and start playing
+3. Press *Update playlist* button to update the playlist and start playing
