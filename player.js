@@ -15,7 +15,7 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '390',
         width: '640',
-        videoId: '',
+        videoId: video_ids[0],
         events: {
 	    'onReady': onPlayerReady,
 	    'onStateChange': onPlayerStateChange,
@@ -31,14 +31,14 @@ function onPlayerReady(event) {
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.ENDED) {
 	cursor += 1;
-	player.loadVideoById(video_ids[cursor], 5, "large");
+	player.loadVideoById(video_ids[cursor]);
     }
 }
 
 function onError(event) {
     cursor += 1;
     if (video_ids[cursor]) {
-	player.loadVideoById(video_ids[cursor], 5, "large");
+	player.loadVideoById(video_ids[cursor]);
     }
 }
 
