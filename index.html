@@ -17,10 +17,16 @@
       var playlistText = document.getElementById("playlist-text");
       var playlist = document.getElementById("playlist");
       function updatePlaylist() {
-	  urls = parseURL(playlistText.value)
-	  urls = formatURLs(urls);
-	  playlist.innerHTML = urls;
+	  ids = parseURL(playlistText.value)
+	  listing = formatIDs(ids);
+
+	  playlist.innerHTML = listing;
+
+	  video_ids = ids;
+	  player.loadVideoById(video_ids[0]);
+	  cursor = 0;
       }
+      
       function parseURL(text) {
 	  var lines = text.split("\n")
 	  patterns = [/(\?|&)v=([^&#]+)/ // For youtube.com/watch&v=video_id
