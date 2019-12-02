@@ -14,6 +14,7 @@
       <input value="Update playlist" type="button" onClick="updatePlaylist();" />
     </form>
     <script>
+      var isIframeLoaded = false;
       var playlistText = document.getElementById("playlist-text");
       var playlist = document.getElementById("playlist");
       function updatePlaylist() {
@@ -23,8 +24,13 @@
 	  playlist.innerHTML = listing;
 
 	  video_ids = ids;
-	  player.loadVideoById(video_ids[0]);
-	  cursor = 0;
+	  if (isIframeLoaded) {
+	      player.loadVideoById(video_ids[0]);
+	      cursor = 0;
+	  } else {
+	      loadYoutubeIFrame();
+	      isIframeLoaded = true;
+	  }
       }
       
       function parseURL(text) {

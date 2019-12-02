@@ -45,5 +45,3 @@ function onError(event) {
 function stopVideo() {
     player.stopVideo();
 }
-
-loadYoutubeIFrame()
