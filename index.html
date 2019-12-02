@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+  </head>
+  <body>
+    <h1>Youtube Playlister</h1>
+    <h2>Playlist</h2>
+    <ol id="playlist"></ol>
+    <h2>Add to playlist</h2>
+    <form>
+      <textarea id="playlist-text" rows="4" cols="50" placeholder="Enter a bunch of Youtube URL" name="urls" autofocus></textarea><br/>
+      <input value="Update playlist" type="button" onClick="updatePlaylist();" />
+    </form>
+    <script>
+      var playlistText = document.getElementById("playlist-text");
+      var playlist = document.getElementById("playlist");
+      function updatePlaylist() {
+	  urls = parseURL(playlistText.value)
+	  urls = formatURLs(urls);
+	  playlist.innerHTML = urls;
+      }
+      function parseURL(text) {
+	  // Not implemented
+	  // var textA = 'All I see her http://e are https apphttps//les, APPles and apPleS';
+	  // var regex = /https?:\/\/\d+(?=see)/g;
+	  // return textA.match(regex);
+	  alert("Sorry, not implemented yet")
+      }
+      function formatURLs(urls) {
+	  result = ""
+	  for(i in urls){
+	      result += "<li>"
+		  + "<a href=\"" + urls[i] + "\">"
+		  + urls[i]
+		  + "</a>"
+		  + "</li>"
+	  }
+	  return result;
+      }
+    </script>
+  </body>
+</html>
