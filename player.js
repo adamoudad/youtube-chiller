@@ -30,18 +30,21 @@ function onPlayerReady(event) {
 
 function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.ENDED) {
-	cursor += 1;
-	player.loadVideoById(video_ids[cursor]);
+	nextVideo()
     }
 }
 
 function onError(event) {
-    cursor += 1;
-    if (video_ids[cursor]) {
-	player.loadVideoById(video_ids[cursor]);
-    }
+    nextVideo();
 }
 
 function stopVideo() {
     player.stopVideo();
 }
+
+function nextVideo() {
+    cursor += 1;
+    cursor %= video_ids.length;
+    player.loadVideoById(video_ids[cursor]);
+}
+
