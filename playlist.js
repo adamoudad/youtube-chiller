@@ -44,7 +44,7 @@ function formatIDs(ids) {
 	    + ids[i]
 	    + "</a> -- "
 	    + "<a href=\"JavaScript:void(0)\""
-	    + "onClick=\"player.loadVideoById('" + ids[i] + "'); cursor=i;\">"
+	    + "onClick=\"updateCursor(" + i + ");\">"
 	    + "Play" + "</a>"
 	    + "</li>"
     }

@@ -48,3 +48,7 @@ function nextVideo() {
     player.loadVideoById(video_ids[cursor]);
 }
 
+function updateCursor(i) {
+    cursor = i % video_ids.length;
+    player.loadVideoById(video_ids[cursor])
+}
