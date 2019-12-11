@@ -1,4 +1,5 @@
 var video_ids = [];		// Array of video IDs
+var blacklist_ids = [];
 var cursor = 0;			// Cursor in video_ids indicating current video playing
 
 // Load the IFrame Player API code asynchronously
@@ -35,6 +36,7 @@ function onPlayerStateChange(event) {
 }
 
 function onError(event) {
+    addBlacklist(video_ids[cursor])
     nextVideo();
 }
 
@@ -51,4 +53,13 @@ function nextVideo() {
 function updateCursor(i) {
     cursor = i % video_ids.length;
     player.loadVideoById(video_ids[cursor])
+}
+
+function addBlacklist(id) {
+    if (!blacklist_ids.includes(id)) {
+	blacklist_ids.push(id);
+    } else {
+	console.log("Video " + id + " is already in blacklist!");
+    }
+    console.log("Blacklist: " + blacklist_ids);
 }
